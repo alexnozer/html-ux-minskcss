@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>HTML: 30 фич, которые сделают ваш сайт удобнее | MinskCSS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/@shower/ribbon/styles/styles.css">
+    <style>
+        .shower {
+            --slide-ratio: calc(16 / 9);
+        }
+
+        .slide code-block {
+            font-family: 'PT Mono', monospace;
+            margin-bottom: 1rem;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            border: 0;
+            padding: 0;
+            white-space: nowrap;
+            clip-path: inset(100%);
+            clip: rect(0 0 0 0);
+            overflow: hidden;
+        }
+    </style>
+    <script type="module" src="code-block/code-block.js"></script>
+</head>
+<body class="shower">
+
+    <header class="caption">
+        <h1>HTML: 30 фич, которые сделают ваш сайт удобнее</h1>
+        <p>Алексей Назаренко, MinskCSS, апрель 2023</p>
+    </header>
+
+    <section class="slide clear">
+        <div class="columns two">
+            <h2 style="align-self: center;">HTML: 30 фич, которые сделают ваш сайт удобнее</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <path d="M108.4 0h23v22.8h21.2V0h23v69h-23V46h-21v23h-23.2M206 23h-20.3V0h63.7v23H229v46h-23M259.5 0h24.1l14.8 24.3L313.2 0h24.1v69h-23V34.8l-16.1 24.8l-16.1-24.8v34.2h-22.6M348.7 0h23v46.2h32.6V69h-55.6"/>
+                <path fill="#e44d26" d="M107.6 471l-33-370.4h362.8l-33 370.2L255.7 512"/>
+                <path fill="#f16529" d="M256 480.5V131H404.3L376 447"/>
+                <path fill="#ebebeb" d="M142 176.3h114v45.4h-64.2l4.2 46.5h60v45.3H154.4M156.4 336.3H202l3.2 36.3 50.8 13.6v47.4l-93.2-26"/>
+                <path fill="#fff" d="M369.6 176.3H255.8v45.4h109.6M361.3 268.2H255.8v45.4h56l-5.3 59-50.7 13.6v47.2l93-25.8"/>
+            </svg>
+        </div>
+    </section>
+
+    <section class="slide clear">
+        <div style="max-width: 50%;">
+            <h2>Алексей Назаренко</h2>
+            <p class="next">
+                Frontend developer<br>
+                Web accessibility
+            </p>
+            <p class="next">Работаю в <img src="./pictures/spurit-logo.svg" height="32" style="vertical-align: middle;" alt="SpurIT"></p>
+            <p class="next"><b>@alexnozer</b> почти везде*</p>
+        </div>
+        <img src="./pictures/me.jpg" class="place right" height="100%" alt="">
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">HTML *</h2>
+        <p class="place bottom">* О нём мало говорят</p>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">UX *</h2>
+        <p class="place bottom">* Это важно</p>
+    </section>
+
+    <section class="slide">
+        <h2>HTML</h2>
+        <ul>
+            <li class="next">Первое, что видит браузер</li>
+            <li class="next">Содержит информацию о ресурсах</li>
+            <li class="next">Парсится различными инструментами</li>
+            <li class="next">Декларативный</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="place center" style="text-align: center;">HTML: 30 фич, которые сделают ваш сайт удобнее</h2>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Общее</h2>
+    </section>
+
+    <section class="slide">
+        <h2>01. <code>lang</code></h2>
+        <code-block language="html">
+            &lt;html lang="ru"&gt;&lt;!-- Основной язык контента - русский --&gt;
+                &lt;head&gt;&lt;!-- ... --&gt;&lt;/head&gt;
+                &lt;body&gt;
+                    &lt;p&gt;Контент на русском языке. &lt;i lang="en"&gt;English term&lt;/i&gt; в тексте.&lt;/p&gt;
+                    &lt;p lang="en"&gt;English content...&lt;/p&gt;
+                    &lt;p lang="de"&gt;Deutscher Inhalt...&lt;/p&gt;
+                &lt;/body&gt;
+            &lt;/html&gt;
+        </code-block>
+        <p class="next">Зачем: переводчики, скринридеры, региональная выдача.</p>
+    </section>
+
+    <section class="slide clear">
+        <img src="./pictures/unnecessary-translation.png"  class="cover" alt="Пример ненужного перевода блока с JavaScript-кодом на сайте Medium в статье про веб-компоненты.">
+        <a href="https://medium.com/sciforce/introduction-to-web-components-84e6507382fc" class="copyright" lang="en" hreflang="en" target="_blank">Introduction to Web Components</a>
+    </section>
+
+    <section class="slide">
+        <h2>02. <code>translate</code></h2>
+        <ul>
+            <li><code></code> или <code>yes</code> - переводить, по умолчанию, наследуется</li>
+            <li><code>no</code> - не переводить</li>
+        </ul>
+        <code-block language="html">
+            &lt;p&gt;Code sample:&lt;/p&gt;
+            &lt;pre translate="no"&gt;
+                &lt;!-- code --&gt;
+            &lt;/pre&gt;
+            &lt;p&gt;Some &lt;i translate="no"&gt;non-translatable term&lt;/i&gt; in text.&lt;/p&gt;
+            &lt;p&gt;Some foreign word "&lt;i lang="de" translate="yes"&gt;Fremdwort&lt;/i&gt;" in text.&lt;/p&gt;
+        </code-block>
+        <p class="next">Зачем: контроль автоматического перевода.</p>
+    </section>
+
+    <section class="slide">
+        <h2>03. <code>hreflang</code></h2>
+        <code-block language="html">
+            &lt;html lang="ru"&gt;
+                &lt;head&gt;
+                    &lt;link rel="alternate" href="https://example.com/en" hreflang="en"&gt;
+                    &lt;link rel="alternate" href="https://example.com/de" hreflang="de"&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                    &lt;a href="https://example.com/ru"&gt;Русский&lt;/a&gt;
+                    &lt;a href="https://example.com/en" lang="en" hreflang="en"&gt;English&lt;/a&gt;
+                    &lt;a href="https://example.com/de" lang="de" hreflang="de"&gt;Deutsch&lt;/a&gt;
+                &lt;/body&gt;
+            &lt;/html&gt;
+        </code-block>
+        <p class="next">Зачем: подсказка браузеру, региональная выдача.</p>
+    </section>
+
+    <section class="slide clear">
+        <h2 class="shout" style="opacity: 0.5;">109</h2>
+        <p style="font-size: 18px; text-align: center;"><code>&lt;a&gt;</code> <code>&lt;abbr&gt;</code> <code>&lt;address&gt;</code> <code>&lt;area&gt;</code> <code>&lt;article&gt;</code> <code>&lt;aside&gt;</code> <code>&lt;audio&gt;</code> <code>&lt;b&gt;</code> <code>&lt;base&gt;</code><br> <code>&lt;bdi&gt;</code> <code>&lt;bdo&gt;</code> <code>&lt;blockquote&gt;</code> <code>&lt;body&gt;</code> <code>&lt;br&gt;</code> <code>&lt;button&gt;</code> <code>&lt;canvas&gt;</code> <code>&lt;caption&gt;</code> <code>&lt;cite&gt;</code> <code>&lt;code&gt;</code> <code>&lt;col&gt;</code> <code>&lt;colgroup&gt;</code> <code>&lt;data&gt;</code> <code>&lt;datalist&gt;</code> <code>&lt;dd&gt;</code> <code>&lt;del&gt;</code> <code>&lt;details&gt;</code> <code>&lt;dfn&gt;</code> <code>&lt;dialog&gt;</code> <code>&lt;div&gt;</code> <code>&lt;dl&gt;</code> <code>&lt;dt&gt;</code> <code>&lt;em&gt;</code> <code>&lt;embed&gt;</code> <code>&lt;fieldset&gt;</code> <code>&lt;figcaption&gt;</code> <code>&lt;figure&gt;</code> <code>&lt;footer&gt;</code> <code>&lt;form&gt;</code> <code>&lt;h1-h6&gt;</code> <code>&lt;head&gt;</code> <code>&lt;header&gt;</code> <code>&lt;hgroup&gt;</code> <code>&lt;hr&gt;</code> <code>&lt;html&gt;</code> <code>&lt;i&gt;</code> <code>&lt;iframe&gt;</code> <code>&lt;img&gt;</code> <code>&lt;input&gt;</code> <code>&lt;ins&gt;</code> <code>&lt;kbd&gt;</code> <code>&lt;label&gt;</code> <code>&lt;legend&gt;</code> <code>&lt;li&gt;</code> <code>&lt;link&gt;</code> <code>&lt;main&gt;</code> <code>&lt;map&gt;</code> <code>&lt;mark&gt;</code> <code>&lt;math&gt;</code> <code>&lt;menu&gt;</code> <code>&lt;meta&gt;</code> <code>&lt;meter&gt;</code> <code>&lt;nav&gt;</code> <code>&lt;noscript&gt;</code> <code>&lt;object&gt;</code> <code>&lt;ol&gt;</code> <code>&lt;optgroup&gt;</code> <code>&lt;option&gt;</code> <code>&lt;output&gt;</code> <code>&lt;p&gt;</code> <code>&lt;picture&gt;</code> <code>&lt;pre&gt;</code> <code>&lt;progress&gt;</code> <code>&lt;q&gt;</code> <code>&lt;rp&gt;</code> <code>&lt;rt&gt;</code> <code>&lt;ruby&gt;</code> <code>&lt;s&gt;</code> <code>&lt;samp&gt;</code> <code>&lt;script&gt;</code> <code>&lt;search&gt;</code> <code>&lt;section&gt;</code> <code>&lt;select&gt;</code> <code>&lt;slot&gt;</code> <code>&lt;small&gt;</code> <code>&lt;source&gt;</code> <code>&lt;span&gt;</code> <code>&lt;strong&gt;</code> <code>&lt;style&gt;</code> <code>&lt;sub&gt;</code> <code>&lt;summary&gt;</code> <code>&lt;sup&gt;</code> <code>&lt;svg&gt;</code> <code>&lt;table&gt;</code> <code>&lt;tbody&gt;</code> <code>&lt;td&gt;</code> <code>&lt;template&gt;</code> <code>&lt;textarea&gt;</code> <code>&lt;tfoot&gt;</code> <code>&lt;th&gt;</code> <code>&lt;thead&gt;</code> <code>&lt;time&gt;</code> <code>&lt;title&gt;</code> <code>&lt;tr&gt;</code> <code>&lt;track&gt;</code> <code>&lt;u&gt;</code> <code>&lt;ul&gt;</code> <code>&lt;var&gt;</code> <code>&lt;video&gt;</code> <code>&lt;wbr&gt;</code></p>
+        <a href="https://html.spec.whatwg.org/multipage/indices.html#elements-3" class="copyright" target="_blank" lang="en" hreflang="en">Elements</a>
+    </section>
+
+    <section class="slide">
+        <h2>04. Семантичная вёрстка</h2>
+        <ul>
+            <li>Ориентиры (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>, ...)</li>
+            <li>Дерево заголовков (<code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>)</li>
+            <li>Группировка (<code>&lt;section&gt;</code>, <code>&lt;blockquote&gt;</code>, <code>&lt;table&gt;</code>, <code>&lt;pre&gt;</code>, ...)</li>
+            <li>Семнатика текста (<code>&lt;strong&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;code&gt;</code>, <code>&lt;dfn&gt;</code>, <code>&lt;kbd&gt;</code>, ...)</li>
+        </ul>
+        <p class="next">Зачем: скринридеры, режим чтения, браузерные расширения, улучшение поисковой выдачи, SEO</p>
+        <a href="https://www.youtube.com/watch?v=W5DgVWtitjQ" class="copyright" target="_blank">Семантика для циников, Вадим Макеев</a>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Медиа</h2>
+    </section>
+
+    <section class="slide">
+        <h2>05. <code>alt</code></h2>
+        <code-block language="html">
+            &lt;img src="cat.jpg" alt="Бело-рыжый кот сидит на подоконнике."&gt;
+            &lt;p&gt;
+                &lt;img src="phone.svg" alt="Телефон:"&gt; +123 456 78 90
+            &lt;/p&gt;
+            &lt;a href="/"&gt;
+                &lt;img src="logo.svg" alt="На главную"&gt;
+            &lt;/a&gt;
+            &lt;img src="decorative.png" alt=""&gt;
+            &lt;figure&gt;
+                &lt;img src="chart.svg" alt="График популяции зубров в Беларуси."&gt;
+                &lt;figcaption&gt;На графике показана динамика популяции ...&lt;/figcaption&gt;
+            &lt;/figure&gt;
+        </code-block>
+        <p class="next">Зачем: скринридеры, поиск по картинкам, fallback.</p>
+        <a href="https://www.w3.org/WAI/tutorials/images/" class="copyright" target="_blank" lang="en" hreflang="en">Images Tutorial | Web Accessibility Initiative</a>
+    </section>
+
+    <section class="slide">
+        <h2>06. <code>&lt;source&gt;</code></h2>
+        <code-block language="html">
+            &lt;picture&gt;
+                &lt;source srcset="img-1920.webp 1920w, img-1024.webp 1024w, img-768.webp 768w, img-576.webp 576w" sizes="(min-width: 900px) 50vw, 100wv" type="image/webp"&gt;
+                &lt;img src="img.jpg" srcset="img-1920.jpg 1920w, img-1024.jpg 1024w, img-768.jpg 768w, img-576.jpg 576w" sizes="(min-width: 900px) 50vw, 100wv" alt=""&gt;
+            &lt;/picture&gt;
+            &lt;video controls width="600" height="400"&gt;
+                &lt;source src="video.hevc.mp4" type="video/mp4; codecs=hevc,mp4a.40.2"&gt;
+                &lt;source src="video.av1.mp4" type="video/mp4; codecs=av01.0.05M.08,opus"&gt;
+                &lt;source src="video.h264.mp4" type="video/mp4; codecs=avc1.4D401E,mp4a.40.2"&gt;
+            &lt;/video&gt;
+        </code-block>
+        <p class="next">Зачем: адаптивность, ретина, уменьшение трафика.</p>
+        <a href="https://web.dev/learn/html/audio-video/" class="copyright" lang="en" hreflang="en" target="_blank">Audio and Video</a>
+    </section>
+
+    <section class="slide">
+        <h2>07. <code>width</code> и <code>height</code></h2>
+        <code-block language="html">
+            &lt;picture&gt;
+                &lt;source srcset="image-desktop.jpg" width="1920" height="1080" media="(min-width: 1200px)"&gt;
+                &lt;source srcset="image-tablet.jpg" width="800" height="600" media="(min-width: 900px)"&gt;
+                &lt;source srcset="image-mobile.jpg" width="320" height="640"&gt;
+                &lt;img src="image-desktop.jpg" width="1920" height="1080" alt=""&gt;
+            &lt;/picture&gt;
+            &lt;video src="movie.mp4" controls width="1920" height="1080"&gt;&lt;/video&gt;
+            &lt;iframe src="https://youtube.com/embed/video_id" width="560" height="315" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+        </code-block>
+        <p class="next">Зачем: предотвращение сдвигов макета (CLS).</p>
+        <a href="https://web.dev/i18n/en/cls/" class="copyright" lang="en" hreflang="en">Cumulative Layout Shift (CLS)</a>
+    </section>
+
+    <section class="slide">
+        <h2>08. Субтитры</h2>
+        <code-block language="html">
+            &lt;video src="video.mp4" controls width="1920" height="1080"&gt;
+                &lt;track src="subtitles.vtt" kind="subtitles" srclang="en" label="English"&gt;
+            &lt;/video&gt;
+        </code-block>
+        <code-block language="plaintext">
+            WEBVTT
+
+            00:00:00.000 --&gt; 00:00:05.000
+            Welcome to our video tutorial on HTML5 video!
+
+            00:00:05.000 --&gt; 00:00:10.000
+            In this tutorial, we will show you how to use the HTML5 video tag.
+        </code-block>
+        <p class="next">Зачем: текстовая альтернатива.</p>
+    </section>
+
+    <section class="slide">
+        <h2>09. <code>loading</code></h2>
+        <code-block language="html">
+            &lt;picture&gt;
+                &lt;source srcset="image-desktop.jpg" width="1920" height="1080" media="(min-width: 1200px)"&gt;
+                &lt;source srcset="image-tablet.jpg" width="800" height="600" media="(min-width: 900px)"&gt;
+                &lt;source srcset="image-mobile.jpg" width="320" height="640"&gt;
+                &lt;img src="image-desktop.jpg" loading="lazy" width="1920" height="1080" alt=""&gt;
+            &lt;/picture&gt;
+            &lt;iframe src="https://youtube.com/embed/video_id" loading="lazy" width="560" height="315" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+        </code-block>
+        <p class="next">Зачем: уменьшение трафика.</p>
+        <a href="https://web.dev/browser-level-image-lazy-loading/" class="copyright" target="_blank">Audio and Video</a>
+    </section>
+
+    <section class="slide clear">
+        <h2 class="visually-hidden">Пример работы <code>loading="lazy"</code></h2>
+        <video src="./pictures/lazyload.webm" class="cover" width="1920" height="1080" controls loop muted style="object-fit: cover;"></video>
+    </section>
+    
+    <section class="slide">
+        <h2 class="shout">Ссылки</h2>
+    </section>
+
+    <section class="slide">
+        <h2>10. Используйте ссылки!</h2>
+        <code-block language="html">
+            &lt;a href="/"&gt;Главная&lt;/a&gt;
+            &lt;a href="/catalog"&gt;Каталог&lt;/a&gt;
+            &lt;a href="/about"&gt;О компании&lt;/a&gt;
+
+            &lt;a href="#main" class="skip-link"&gt;Перейти к содержимому&lt;/a&gt;
+
+            &lt;p&gt;Содержание:&lt;/p&gt;
+            &lt;a href="#section1"&gt;Раздел 1&lt;/a&gt;
+            &lt;a href="#section2"&gt;Раздел 2&lt;/a&gt;
+        </code-block>
+        <p class="next">Зачем: режимы открытия, копирование, сохранение, доступность, состояния</p>
+        <a href="https://youtu.be/_UmMLsIeK9k" class="copyright" target="_blank">Тег a, Никита Дубко</a>
+    </section>
+
+    <section class="slide">
+        <h2>11. <code>download</code></h2>
+        <code-block language="html">
+            &lt;a href="https://cdn.com/pricelist_april.xls" download&gt;Скачать прайслист&lt;/a&gt;
+
+            &lt;a href="https://cdn.com/aQBdyAE6TgxgAt.xls" download="Прайслист за апрель"&gt;
+                Скачать прайслист
+            &lt;/a&gt;
+        </code-block>
+        <p class="next">Зачем: человекочитаемое название, не требуется JS.</p>
+    </section>
+
+    <section class="slide">
+        <h2>12. Внешние ссылки</h2>
+        <code-block language="html">
+            &lt;a href="https://example.com/" target="_blank" rel="noreferrer noopener"&gt;
+                Сайт партнёра
+            &lt;/a&gt;
+            &lt;a href="https://twitter.com/" target="_blank" rel="noreferrer noopener" aria-label="Мы в Twitter"&gt;
+                &lt;svg&gt;&lt;!-- ... --&gt;&lt;/svg&gt;
+            &lt;/a&gt;
+        </code-block>
+        <p class="next">Зачем: сохранение вкладки, повышение безопасности.</p>
+    </section>
+
+    <section class="slide">
+        <h2>13. Протоколы</h2>
+        <code-block language="html">
+            &lt;p&gt;Контакты:&lt;/p&gt;
+            Email: &lt;a href="mailto:example@email.com"&gt;example@email.com&lt;/a&gt;
+            Телефон: &lt;a href="tel:+1234567890"&gt;+123 456-78-90&lt;/a&gt;
+            Запись по СМС: &lt;a href="sms:+1234567890"&gt;+123 456-78-91&lt;/a&gt;
+            Факс: &lt;a href="fax:+1234567892"&gt;+123 456-78-92&lt;/a&gt;
+            Адрес: &lt;a href="geo:53.902284,27.561831"&gt;Минск, ул. Уличная, д. 1&lt;/a&gt;
+        </code-block>
+        <code-block class="next" language="html">
+            &lt;a href="sms:+1234567890?body=Добрый день! Хочу записаться на приём во вторник.&subject=Запись на приём"&gt;Записаться на вторник по СМС&lt;/a&gt;
+            &lt;a href="mailto:example@email.com?to=example2@email.com&subject=Отзыв&body=Добрый день! Хочу оставить отзыв:"&gt;Оставить отзыв&lt;/a&gt;
+        </code-block>
+        <p class="next">Зачем: нативные приложения, быстрые действия.</p>
+    </section>
+
+    <section class="slide">
+        <h2>14. Deep links</h2>
+        <code-block language="html">
+            &lt;a href="tg://msg?user_id=alexnozer"&gt;Мой Telegram&lt;/a&gt;
+            &lt;a href="tg://join?invite=&lt;invite_link&gt;"&gt;Наш чат в Telegram&lt;/a&gt;
+            Забирай наш крутой &lt;a href="tg://addstickers?set=&lt;stickers&gt;"&gt;стикерпак&lt;/a&gt;!
+        </code-block>
+        <p class="next">Зачем: нативные приложения, быстрые действия.</p>
+    </section>
+
+    <section class="slide">
+        <h2>15. Share links</h2>
+        <code-block language="html">
+            &lt;a href="https://twitter.com/intent/tweet?text=Крутой сайт!&url=https://site.com&hashtags=site,web" target="_blank" rel="noopener"&gt;Поделиться в Twitter&lt;/a&gt;
+            &lt;a href="https://www.facebook.com/sharer.php?u=https://site.com" target="_blank" rel="noopener"&gt;Поделиться в Facebook&lt;/a&gt;
+            &lt;a href="https://vk.com/share.php?url=https://site.com" target="_blank" rel="noopener"&gt;Поделиться в VK&lt;/a&gt;
+            &lt;a href="https://www.linkedin.com/sharing/share-offsite/?url=https://site.com" target="_blank" rel="noopener"&gt;Поделиться в LinkedIn&lt;/a&gt;
+        </code-block>
+        <p class="next">Зачем: не требуется JS.</p>
+        <a class="copyright" href="https://mefody.dev/chunks/social-sharing-html-only/" target="_blank" hreflang="en">Social media buttons without JavaScript</a>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Формы</h2>
+    </section>
+
+    <section class="slide">
+        <h2>16. Используйте <code>&lt;form&gt;</code>!</h2>
+        <code-block language="html">
+            &lt;form action="https://example.com/add_to_cart" method="post"&gt;
+                &lt;!-- поля формы --&gt;
+            &lt;/form&gt;
+        </code-block>
+        <p class="next">Зачем: автодополнение, встроенная валидация, сохранение данных, прогрессивное улучшение.</p>
+    </section>
+
+    <section class="slide">
+        <h2>17. <code>autocomplete</code></h2>
+        <code-block language="html">
+            &lt;form action="https://example.com/profile_edit" method="post"&gt;
+                &lt;input type="text" name="name" id="name" autocomplete="name"&gt;
+                &lt;input type="email" name="email" id="email" autocomplete="email"&gt;
+                &lt;input type="tel" name="phone" id="phone" autocomplete="tel mobile"&gt; 
+                &lt;input type="text" name="birthday" id="birthday" autocomplete="bday"&gt; 
+                &lt;input type="text" name="address" id="address" autocomplete="street-address"&gt;
+                &lt;button&gt;Сохранить&lt;/button&gt;
+            &lt;/form&gt;
+        </code-block>
+        <p class="next">Зачем: автодополнение, сохранение данных.</p>
+        <a href="https://youtu.be/Es18Oyo9hg4" class="copyright" target="_blank">001. Как работает автозаполнение в браузерах</a>
+    </section>
+
+    <section class="slide">
+        <h2>18. <code>inputmode</code></h2>
+        <code-block language="html">
+            &lt;form action="https://example.com/profile_edit" method="post"&gt;
+                &lt;input type="text" name="name" id="name" inputmode="text"&gt;
+                &lt;input type="text" name="email" id="email" inputmode="email"&gt;
+                &lt;input type="text" name="phone" id="phone" inputmode="tel"&gt; 
+                &lt;input type="text" name="birthday" id="birthday" inputmode="numeric"&gt; 
+                &lt;input type="text" name="address" id="address" inputmode="text"&gt;
+                &lt;button&gt;Сохранить&lt;/button&gt;
+            &lt;/form&gt;
+        </code-block>
+        <p class="next">Зачем: виртуальные клавиатуры.</p>
+    </section>
+
+    <section class="slide clear">
+        <img class="cover" src="./pictures/inputmode.jpg" alt="Различные виртуальные клавиатуры на мобильном телефоне в зависимости от значений атрибута inputmode.">
+        <a class="copyright" href="https://twitter.com/addyosmani/status/1348902534363152385?s=20" target="_blank" hreflang="en">@addyosmani</a>
+    </section>
+
+    <section class="slide">
+        <h2>19. <code>autocapitalize</code></h2>
+        <ul>
+            <li><code>off</code> или <code>none</code>- стандартное поведение</li>
+            <li><code>on</code> или <code>sentences</code> - <i>Lorem ipsum. Dolor sit</i></li>
+            <li><code>words</code> - <i>Lorem Ipsum Dolor Sit</i></li>
+            <li><code>characters</code> - <i>LOREM IPSUM DOLOR SIT</i></li>
+        </ul>
+        <code-block language="html">
+            &lt;input type="text" name="name" id="name" autocapitalize="words"&gt;
+        </code-block>
+        <p class="next">Зачем: удобство ввода.</p>
+    </section>
+
+    <section class="slide">
+        <h2>20. <code>placeholder</code></h2>
+        <code-block language="html">
+            &lt;form action="https://example.com/profile_edit" method="post"&gt;
+                &lt;input type="text" name="name" id="name" placeholder="Иван Иванов"&gt;
+                &lt;input type="text" name="email" id="email" placeholder="example@email.com"&gt;
+                &lt;input type="text" name="phone" id="phone" placeholder="+375441234567"&gt; 
+                &lt;input type="text" name="birthday" id="birthday" placeholder="01.01.1990"&gt; 
+                &lt;input type="text" name="address" id="address" placeholder="ул. Уличная, д. 10, кв. 1"&gt;
+                &lt;button&gt;Сохранить&lt;/button&gt;
+            &lt;/form&gt;
+        </code-block>
+        <p class="next">Зачем: образец данных.</p>
+    </section>
+
+    <section class="slide">
+        <h2>21. Валидация данных</h2>
+        <code-block language="html">
+            &lt;form action="https://example.com/profile_edit" method="post" novalidate&gt;
+                &lt;input type="text" name="name" id="name" pattern="[a-zA-Z'-.]+ [a-zA-Z'-.]+"&gt;
+                &lt;input type="text" name="email" id="email" minlenght="5"&gt;
+                &lt;input type="text" name="phone" id="phone" pattern="\+375(29|44|25)\d{7}"&gt; 
+                &lt;input type="text" name="birthday" id="birthday" pattern="[0123]\d\.[01]\d\.[12][09]\d{2}"&gt; 
+                &lt;input type="text" name="address" id="address" required&gt;
+                &lt;button&gt;Сохранить&lt;/button&gt;
+            &lt;/form&gt;
+        </code-block>
+        <p class="next">Зачем: прогрессивное улучшение, улучшение качества данных, не требуется JS.</p>
+    </section>
+
+    <section class="slide">
+        <h2>22. <code>spellcheck</code></h2>
+        <code-block language="html">
+            &lt;form action="https://example.com/login" method="post"&gt;
+                &lt;input type="text" name="username" id="username" spellcheck="false"&gt;
+                &lt;input type="password" name="password" id="password"&gt;
+                &lt;button&gt;Войти&lt;/button&gt;
+            &lt;/form&gt;
+        </code-block>
+        <p class="next">Зачем: предотвращение автокоррекции.</p>
+    </section>
+
+    <section class="slide">
+        <h2>23. <code>&lt;label&gt;</code></h2>
+        <code-block language="html">
+            &lt;form action="https://example.com/profile_edit" method="post"&gt;
+                &lt;label for="name"&gt;Имя:&lt;/label&gt;
+                &lt;input type="text" name="name" id="name"&gt;
+                &lt;label for="email"&gt;Email:&lt;/label&gt;
+                &lt;input type="text" name="email" id="email"&gt;
+                &lt;label for="phone"&gt;Телефон:&lt;/label&gt;
+                &lt;input type="text" name="phone" id="phone"&gt; 
+                &lt;!-- остальные поля --&gt;
+                &lt;button&gt;Сохранить&lt;/button&gt;
+            &lt;/form&gt;
+        </code-block>
+        <p class="next">Зачем: скринридеры, переход к полю, увеличение точности автодополнения.</p>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Метаданные</h2>
+    </section>
+
+    <section class="slide">
+        <h2>24. <code>viewport</code></h2>
+        <code-block language="html">
+            &lt;head&gt;
+                &lt;!-- ... --&gt;
+                &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                &lt;!-- ... --&gt;
+            &lt;/head&gt;
+        </code-block>
+        <p class="next">Зачем: адаптивность, зум на мобильных устройствах.</p>
+    </section>
+
+    <section class="slide">
+        <h2>25. Базовая метаинформация</h2>
+        <code-block language="html">
+            &lt;head&gt;
+                &lt;title&gt;Блог | Статья&lt;/title&gt;
+                &lt;meta name="theme-color" content="#5655d1"&gt; 
+                &lt;meta name="description" content="В статье рассказывается про Web Vitals..."&gt;
+                &lt;meta name="keywords" content="производительность,скорость,preformance,web,vitals"&gt;
+                &lt;meta name="author" content="Алексей Назаренко"&gt;
+                &lt;meta name="generator" content="eleventy"&gt; 
+                &lt;!-- и другие --&gt;
+            &lt;/head&gt;
+        </code-block>
+        <p class="next">Зачем: улучшение сниппета в поиске, другие устройства, шаринг, SEO.</p>
+    </section>
+
+    <section class="slide">
+        <h2>26. Цветовые схемы</h2>
+        <code-block language="html">
+            &lt;head&gt;
+                &lt;!-- ... --&gt;
+                &lt;meta name="color-scheme" content="dark light"&gt;
+                &lt;meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"&gt; 
+                &lt;meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)"&gt;
+                &lt;link rel="stylesheet" href="base.css"&gt;
+                &lt;link rel="stylesheet" href="light.css" media="(prefers-color-scheme: light)"&gt;
+                &lt;link rel="stylesheet" href="dark.css" media="(prefers-color-scheme: dark)"&gt;
+                &lt;!-- ... --&gt;
+            &lt;/head&gt;
+        </code-block>
+        <p class="next">Зачем: адаптивность, пользовательские предпочтения.</p>
+    </section>
+
+    <section class="slide">
+        <h2>27. Open Graph</h2>
+        <code-block language="html">
+            &lt;meta property="og:title" content="Заголовок статьи"&gt;
+            &lt;meta property="og:description" content="Описание статьи"&gt;
+            &lt;meta property="og:type" content="article"&gt;
+            &lt;meta property="og:url" content="http://example.com/article"&gt;
+            &lt;meta property="og:image" content="http://example.com/cover.jpg"&gt;
+            &lt;meta property="og:image:width" content="1200"&gt;
+            &lt;meta property="og:image:height" content="630"&gt;
+            &lt;meta property="article:published_time" content="2022-03-01T08:00:00+08:00"&gt;
+            &lt;meta property="article:modified_time" content="2022-03-02T08:00:00+08:00"&gt;
+            &lt;meta property="article:author" content="http://example.com/author"&gt;
+            &lt;meta property="article:tag" content="Тег"&gt;
+            &lt;meta property="article:section" content="Раздел блога"&gt;
+        </code-block>
+        <p class="next">Зачем: шаринг, улучшение сниппета в поиске.</p>
+        <a href="https://opengraphprotocol.org/" class="copyright" target="_blank" lang="en" hreflang="en">The Open Graph protocol</a></p>
+    </section>
+
+    <section class="slide">
+        <h2>28. Twitter Card</h2>
+        <code-block language="html">
+            &lt;meta name="twitter:card" content="summary"&gt;
+            &lt;meta name="twitter:site" content="@site_twitter"&gt;
+            &lt;meta name="twitter:creator" content="@author_twitter"&gt;
+            &lt;meta name="twitter:url" content="http://example.com/article"&gt;
+            &lt;meta name="twitter:title" content="Заголовок статьи"&gt;
+            &lt;meta name="twitter:description" content="Короткое описание статьи"&gt;
+            &lt;meta name="twitter:image" content="http://example.com/cover.jpg"&gt;
+        </code-block>
+        <p class="next">Зачем: шаринг в Twitter, улучшение сниппета в поиске.</p>
+        <a href="https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards" class="copyright" target="_blank" lang="en" hreflang="en">Twitter Cards</a>
+    </section>
+
+    <section class="slide">
+        <h2>29. Schema.org</h2>
+        <code-block language="html">
+            &lt;article itemscope itemtype="http://schema.org/Article"&gt;
+                &lt;img src="https://example.com/cover.jpg" itemprop="image" alt=""&gt;
+                &lt;h2 itemprop="headline"&gt;Заголовок статьи&lt;/h2&gt;
+                &lt;p itemprop="description"&gt;Короткое описание&lt;/p&gt;
+                &lt;div itemprop="author" itemscope itemtype="http://schema.org/Person"&gt;
+                    &lt;p itemprop="givenName"&gt;Имя&lt;/p&gt;
+                    &lt;link rel="author" itemprop="url" href="https://example.com/author"&gt;
+                &lt;/div&gt;
+                &lt;time itemprop="datePublished" datetime="2023-04-07"&gt;7 апреля 2023&lt;/p&gt;
+                &lt;meta itemprop="dateModified" content="2023-04-09"&gt;
+                &lt;a href="https://example.com" itemprop="url"&gt;Читать&lt;/a&gt;
+            &lt;/article&gt;
+        </code-block>
+        <p class="next">Зачем: улучшение сниппета в поиске, другие устройства, SEO.</p>
+        <a href="https://schema.org/docs/documents.html" class="copyright" target="_blank" lang="en" hreflang="en">Schema.org</a>
+    </section>
+
+    <section class="slide">
+        <h2>30. JSON-LD</h2>
+        <code-block language="html">
+            &lt;script type="application/json+ld"&gt;
+            {
+                "@context": "https://schema.org",
+                "@type": "Article",
+                "image": "https://example.com/cover.jpg",
+                "headline": "Заголовок статьи",
+                "description": "Короткое описание",
+                "datePublished": "2023-04-07",
+                "url": "https://example.com/article",
+                "author": { ... }
+            }
+            &lt;/script&gt;
+        </code-block>
+        <p class="next">Зачем: улучшение сниппета в поиске, другие устройства, SEO.</p>
+        <a href="https://schema.org/docs/documents.html" class="copyright" target="_blank" lang="en" hreflang="en">Schema.org</a>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Это не всё</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Итог</h2>
+        <ul>
+            <li class="next">Читайте <a href="https://html.spec.whatwg.org/multipage/" hreflang="en" target="_blank">специфиацию HTML</a></li>
+            <li class="next">Используйте возможности HTML</li>
+            <li class="next">Делайтие сайты удобнее</li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Спасибо за внимание!</h2>
+    </section>
+
+    <section class="slide clear">
+        <h2 class="shout" style="text-align: left; color: white; padding-left: var(--slide-side);">Вопросы</h2>
+        <img src="pictures/questions.jpg" class="cover height" alt="Много знаков вопроса серого цвета и один красного цвета лежат на серой поверхности.">
+    </section>
+
+    <footer class="badge">
+        <a href="https://github.com/shower/shower">Сделано в <i lang="en">Shower</i></a>
+    </footer>
+
+    <div class="progress"></div>
+
+    <script src="node_modules/@shower/core/dist/shower.js"></script>
+</body>
+</html>
