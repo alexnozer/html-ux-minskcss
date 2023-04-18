@@ -1,14 +1,13 @@
-import hljs from './highlight.min.js';
-
+import hljs from 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/es/highlight.min.js';
 export class CodeBlock extends HTMLElement {
 	constructor() {
 		super();
 	}
 
 	connectedCallback() {
-		this._shadowRoot = this.attachShadow({ mode: 'open' });
-		this._shadowRoot.innerHTML = `
-			<link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/stackoverflow-light.min.css">
+		this.attachShadow({ mode: 'open' });
+		this.shadowRoot.innerHTML = `
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/stackoverflow-light.min.css">
 			<style>
 				:host {
 					display: block;
@@ -32,13 +31,13 @@ export class CodeBlock extends HTMLElement {
 	}
 
 	_getHighlightedCode() {
-		const code = this._cleanIndentation(this.innerHTML).trim();
+		let code = this._cleanIndentation(this.innerHTML).trim();
 		this.innerHTML = '';
 
 		const codeNode = document.createElement('code');
 		codeNode.classList.add(`language-${this.getAttribute('language')}`);
 		codeNode.innerHTML = code;
-		hljs.highlightBlock(codeNode);
+		hljs.highlightElement(codeNode);
 		
 		return `<pre>${codeNode.outerHTML}</pre>`;
 	}
